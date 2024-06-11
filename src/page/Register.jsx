@@ -15,56 +15,58 @@ export const action = async ({ request }) => {
 function Register() {
   const data = useActionData();
   const { registerWithGoogle, register } = useRegister();
+
   useEffect(() => {
     if (data) {
       register(data);
     }
-  }, [data]);
+  }, [data, register]);
+
   return (
-    <div className="h-screen grid place-content-center">
+    <div className="h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500">
       <Form
         method="post"
-        className="card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4"
+        className="card w-96 p-8 bg-white shadow-lg rounded-lg flex flex-col gap-y-4"
       >
-        <h4 className="text-center font-bold text-3xl">Register</h4>
+        <h4 className="text-center font-bold text-3xl text-gray-800">Register</h4>
         <input
           type="text"
-          label="Display Name :"
           name="displayName"
           placeholder="User Name"
+          className="input input-bordered w-full mt-2"
         />
         <input
           type="url"
-          label="Photo URL"
           name="photoURL"
           placeholder="https://photoURL.com"
+          className="input input-bordered w-full mt-2"
         />
         <input
           type="email"
-          label="E-mail"
           name="email"
           placeholder="test@gmail.com"
+          className="input input-bordered w-full mt-2"
         />
         <input
           type="password"
-          label="Password"
           name="password"
-          placeholder="00000000"
+          placeholder="********"
+          className="input input-bordered w-full mt-2"
         />
-        <button className="mt-4 btn btn-primary btn-block capitalize">
-          Login
+        <button type="submit" className="btn btn-primary btn-block capitalize mt-4">
+          Register
         </button>
         <button
+          type="button"
           onClick={registerWithGoogle}
-          className="btn btn-primary w-full  mb-5"
+          className="btn btn-outline w-full flex items-center justify-center gap-2 mt-2"
         >
-          <FcGoogle className="text-3xl" />
-          <span className="text-2xl">Google</span>
+          <FcGoogle className="text-2xl" />
+          <span className="text-lg">Register with Google</span>
         </button>
-
-        <p className="text-center">
-          Not a member yet ?
-          <Link to="/login" className="capitalize link">
+        <p className="text-center mt-4 text-gray-600">
+          Already a member?{" "}
+          <Link to="/login" className="text-blue-500 hover:underline">
             Login
           </Link>
         </p>

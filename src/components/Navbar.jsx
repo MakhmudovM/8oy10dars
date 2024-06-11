@@ -1,36 +1,35 @@
 import React from "react";
-
 import { auth } from "../firebase/firebaseConfig";
 import { signOut } from "firebase/auth";
 import { useSelector } from "react-redux";
+
 const Navbar = () => {
   const { user } = useSelector((state) => state.userState);
   return (
-    <div className="max-w-[1100px] mx-auto px-5">
-      <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <a className="btn text-xl btn-primary">MyTodoList </a>
-        </div>
-        <div className="flex-none gap-2">
-          <div className="dropdown dropdown-end">
-            <div
+    <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 shadow-md">
+      <div className="max-w-[1100px] mx-auto flex justify-between items-center">
+        <a className="text-2xl font-bold text-white">MyTL</a>
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <button
               tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="relative flex items-center justify-center w-10 h-10 bg-white rounded-full focus:outline-none"
             >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={`${user.photoURL}`}
-                />
-              </div>
-            </div>
+              <img
+                alt="User Avatar"
+                src={user.photoURL}
+                className="rounded-full w-full h-full"
+              />
+            </button>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
             >
-              <li>
-                <button onClick={() => signOut(auth)} className="btn btn-sm ">
+              <li className="block px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer">
+                <button
+                  onClick={() => signOut(auth)}
+                  className="w-full text-left"
+                >
                   Logout
                 </button>
               </li>

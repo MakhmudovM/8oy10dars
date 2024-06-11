@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
-import toast from "react-hot-toast";
+import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { login } from "./useRegister";
 

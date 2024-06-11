@@ -6,7 +6,7 @@ import {
   } from "firebase/auth";
   import { auth } from "../firebase/firebaseConfig";
   import { useDispatch } from "react-redux";
-  import toast from "react-hot-toast";
+  import toast, { Toaster } from 'react-hot-toast';
   export { login } from "../features/userSlice";
   
   export function useRegister() {
