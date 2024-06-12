@@ -3,8 +3,7 @@ import { useCollection } from "../hooks/useColection";
 import { useSelector } from "react-redux";
 import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
-// Uncomment if using react-hot-toast
-// import { toast } from 'react-hot-toast';
+
 
 const Home = () => {
   const { user } = useSelector((state) => state.userState);
@@ -19,7 +18,7 @@ const Home = () => {
       alert("Title and Description cannot be empty");
       return;
     }
-    const newTask = { title, description, uid: user.uid, id: Math.random() };
+    const newTask = { title, description, uid: user.uid };
     addDoc(collection(db, "tasks"), newTask)
       .then(() => {
        
@@ -31,10 +30,13 @@ const Home = () => {
       });
   };
 
-  const handleDelete = (taskId) => {
+  const Delete = (taskId) => {
+    console.log(taskId)
     const taskRef = doc(db, "tasks", taskId);
     deleteDoc(taskRef);
   };
+
+  console.log(data)
 
   return (
     <div className="max-w-[1100px] mx-auto px-5 py-10">
@@ -72,13 +74,13 @@ const Home = () => {
           >
             <span className="text-lg font-medium text-gray-800">{task.title}</span>
             <button
-              onClick={() => handleDelete(task.id)}
+              onClick={() => Delete(task.id)}
               className="btn btn-sm bg-red-600 text-white"
             >
               delete
             </button>
-          </li>
-        ))}
+          </li>)
+        )}
       </ul>
     </div>
   );
