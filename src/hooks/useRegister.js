@@ -6,7 +6,6 @@ import {
   } from "firebase/auth";
   import { auth } from "../firebase/firebaseConfig";
   import { useDispatch } from "react-redux";
-  import toast, { Toaster } from 'react-hot-toast';
   export { login } from "../features/userSlice";
   
   export function useRegister() {
@@ -18,12 +17,10 @@ import {
             displayName: data.displayName,
             photoURL: data.photoURL,
           });
-          toast.success(`welcome ${data.displayName}`);
           dispatch(login(userCredential.user));
         })
-        .catch((error) => {
-          const errorMessage = error.message;
-          toast.error(errorMessage);
+        .catch((e) => {
+          alert(e.message)
         });
     };
     const registerWithGoogle = () => {
@@ -33,9 +30,8 @@ import {
           const user = result.user;
           dispatch(login(user));
         })
-        .catch((error) => {
-          const errorMessage = error.message;
-          toast.error(errorMessage);
+        .catch((e) => {
+          alert(e.message)
         });
     };
   

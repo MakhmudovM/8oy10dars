@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
-import toast, { Toaster } from 'react-hot-toast';
+
 import { useDispatch } from "react-redux";
 import { login } from "./useRegister";
 
@@ -14,7 +14,7 @@ export function useLogin() {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        toast.error(errorMessage);
+        
       });
   };
 

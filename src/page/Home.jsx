@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useCollection } from "../hooks/useColection";
 import { useSelector } from "react-redux";
 import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
-import toast, { Toaster } from 'react-hot-toast';
 import { db } from "../firebase/firebaseConfig";
 
 const Home = () => {
@@ -26,17 +25,10 @@ const Home = () => {
   const handleDelete = (taskId) => {
     const taskRef = doc(db, "tasks", taskId);
     deleteDoc(taskRef)
-      .then(() => {
-        toast.success("Task deleted successfully");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
   };
 
   return (
     <div className="max-w-[1100px] mx-auto px-5 py-10">
-      <Toaster />
       <h1 className="text-center text-5xl mb-10 font-bold text-gray-800">Tasks</h1>
       <form onSubmit={handleSubmit} className="flex flex-col md:flex-row justify-center items-end gap-4 mb-10">
         <label className="flex flex-col">
