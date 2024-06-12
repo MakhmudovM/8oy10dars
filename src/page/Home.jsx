@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <div className="max-w-[1100px] mx-auto px-5 py-10">
       <Toaster />
-      <h1 className="text-center text-5xl mb-10 font-bold text-gray-800">Task List</h1>
+      <h1 className="text-center text-5xl mb-10 font-bold text-gray-800">Tasks</h1>
       <form onSubmit={handleSubmit} className="flex flex-col md:flex-row justify-center items-end gap-4 mb-10">
         <label className="flex flex-col">
           <span className="font-semibold text-gray-700">Title</span>
@@ -70,9 +70,9 @@ const Home = () => {
             <span className="text-lg font-medium text-gray-800">{task.title}</span>
             <button
               onClick={() => handleDelete(task.id)}
-              className="btn btn-sm btn-error"
+              className="btn btn-sm bg-red-600 text-white"
             >
-              x
+              delete
             </button>
           </li>
         ))}
