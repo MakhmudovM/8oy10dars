@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 shadow-md">
       <div className="max-w-[1100px] mx-auto flex justify-between items-center">
-        <a className="text-2xl font-bold text-white">Koelen Work List</a>
+        <a className="text-2xl font-bold text-white">Kolen Work List</a>
         <div className="flex items-center gap-4">
           <div className="relative">
             <button
