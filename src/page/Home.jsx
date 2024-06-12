@@ -3,6 +3,8 @@ import { useCollection } from "../hooks/useColection";
 import { useSelector } from "react-redux";
 import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+// Uncomment if using react-hot-toast
+// import { toast } from 'react-hot-toast';
 
 const Home = () => {
   const { user } = useSelector((state) => state.userState);
@@ -12,19 +14,26 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!title.trim() || !description.trim()) {
+      
+      alert("Title and Description cannot be empty");
+      return;
+    }
     const newTask = { title, description, uid: user.uid, id: Math.random() };
     addDoc(collection(db, "tasks"), newTask)
       .then(() => {
-        toast.success("New task added successfully");
+       
+        setTitle("");
+        setDescription("");
       })
-      .catch((error) => {
-        toast.error(error.message);
+      .catch((e) => {
+        alert(e.message);
       });
   };
 
   const handleDelete = (taskId) => {
     const taskRef = doc(db, "tasks", taskId);
-    deleteDoc(taskRef)
+    deleteDoc(taskRef);
   };
 
   return (
@@ -36,6 +45,7 @@ const Home = () => {
           <input
             className="p-2 border rounded-md mt-1"
             required
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             type="text"
           />
@@ -45,6 +55,7 @@ const Home = () => {
           <input
             className="p-2 border rounded-md mt-1"
             required
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="text"
           />

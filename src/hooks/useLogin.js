@@ -12,9 +12,8 @@ export function useLogin() {
        
         dispatch(login({ email: data.email, password: data.password }));
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        
+      .catch((e) => {
+        alert(e.message)
       });
   };
 
