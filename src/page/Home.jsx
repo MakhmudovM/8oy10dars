@@ -58,7 +58,7 @@ const Home = () => {
           />
         </label>
         <button type="submit" className="btn btn-primary py-2 px-4 mt-4 md:mt-0">
-          Add Task
+          Add
         </button>
       </form>
       <ul className="bg-gray-100 w-full md:w-[800px] mx-auto p-4 rounded-lg shadow-md">
